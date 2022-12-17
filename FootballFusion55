@@ -1,0 +1,28 @@
+ if not getgenv().MTAPIMutex then loadstring(game:HttpGet("https://raw.githubusercontent.com/KikoTheDon/MT-Api-v2/main/__source/mt-api%20v2.lua", true))() end
+
+local plr = game.Players.LocalPlayer
+local hook = nil
+local enabled = false
+
+plr.Character["Left Leg"]:AddPropertyEmulator("Size") -- fake size
+plr.Character["Right Leg"]:AddPropertyEmulator("Size") -- fake size
+
+        plr.Character["Left Leg"]:AddPropertyEmulator("Size") -- fake size
+        plr.Character["Right Leg"]:AddPropertyEmulator("Size") -- fake size
+        
+        for i,v in pairs(getconnections(plr.Character["Left Leg"]:GetPropertyChangedSignal("Size"))) do
+            v.Function = error
+            v:Disable() -- disable property changed
+        end
+        for i,v in pairs(getconnections(plr.Character["Right Leg"]:GetPropertyChangedSignal("Size"))) do
+            v.Function = error
+            v:Disable() -- disable property changed
+        end
+
+        plr.Character["Left Leg"].Size = Vector3.new(1, 2, 1)
+        plr.Character["Right Leg"].Size = Vector3.new(1, 2, 1)
+        plr.Character["Left Arm"].Massless = true
+        plr.Character["Right Arm"].Massless = true
+        enabled = true
+   
+     
